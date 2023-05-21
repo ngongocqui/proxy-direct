@@ -7,14 +7,18 @@ const proxy = httpProxy.createProxyServer({});
 const env = yenv("env.yaml", { env: process.env.NODE_ENV });
 
 const isEqualHeader = (headerSource, headerTarget) => {
-  const arraySource = Object.entries(headerSource).map(([key, value]) => ({
-    key: String(key).trim().toLocaleLowerCase(),
-    value: String(value).trim().toLocaleLowerCase(),
-  }));
-  const arrayTarget = Object.entries(headerTarget).map(([key, value]) => ({
-    key: String(key).trim().toLocaleLowerCase(),
-    value: String(value).trim().toLocaleLowerCase(),
-  }));
+  const arraySource = Object.entries(headerSource || {}).map(
+    ([key, value]) => ({
+      key: String(key).trim().toLocaleLowerCase(),
+      value: String(value).trim().toLocaleLowerCase(),
+    })
+  );
+  const arrayTarget = Object.entries(headerTarget || {}).map(
+    ([key, value]) => ({
+      key: String(key).trim().toLocaleLowerCase(),
+      value: String(value).trim().toLocaleLowerCase(),
+    })
+  );
   return _.differenceWith(arrayTarget, arraySource, _.isEqual)?.length === 0;
 };
 
