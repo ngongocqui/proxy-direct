@@ -1,0 +1,22 @@
+{
+  "name": "http-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=dev node server",
+    "start:dev": "cross-env NODE_ENV=dev node server",
+    "start:uat": "cross-env NODE_ENV=uat node server",
+    "start:prod": "cross-env NODE_ENV=prod node server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-proxy": "^1.18.1",
+    "lodash": "^4.17.21",
+    "yenv": "^3.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
